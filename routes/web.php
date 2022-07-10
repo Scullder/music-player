@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TrackController;
+use App\Http\Controllers\LiveController;
+
+use App\Http\Controllers\PageController;
+
 
 
 /*
@@ -17,4 +21,11 @@ use App\Http\Controllers\TrackController;
 */
 
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/main', [TrackController::class, 'getTracks'])->name('tracks');
+Route::get('/main', [PageController::class, 'main'])->name('main');
+Route::get('/home', [PageController::class, 'home'])->name('home');
+Route::get('/playlist', [PageController::class, 'playlist'])->name('playlist');
+
+Route::post('/set-playlist', [PageController::class, 'setPlaylist']);
+
+
+Route::get('/db_insert', [DataController::class, 'createData']);
