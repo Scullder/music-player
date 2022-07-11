@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Playlist;
+use App\Models\Song;
 
 class PageController extends Controller
 {
@@ -38,9 +40,18 @@ class PageController extends Controller
     return view('pages.home', ['homeSongs' => $songs]);
   }
 
-  public function playlist()
+  public function allPlaylists()
   {
-    return view('pages.playlist');
+    $playlists = Playlist::select()->get();
+
+    return view('pages.all_playlists', ['playlists' => $playlists]);
+  }
+
+  public function playlist($id)
+  {
+    $playlist = Playlist::find($id);
+    $songs = $playlist->songs;
+    return view('pages.playlist', ['playlist' => $playlist, 'songs' => $songs]);
   }
 
   public function setPlaylist(Request $request)

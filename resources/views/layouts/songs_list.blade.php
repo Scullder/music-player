@@ -1,18 +1,19 @@
 <ul class="songs-list">
-  @foreach($songsList as $song)
+  @foreach($songs as $song)
     <li>
-      <form class="form" method='post'>
+      <form class="song" method='post'>
         @csrf
-        <input type="text" name="url" value="{{ $song->url }}">
-        <input type="text" name="playlist" value="{{ $song->playlist }}">
-        <input type="submit" value="отправить">
+        <input type="text" name="title" value="{{ $song->title }}">
+        <input type="text" name="url" value="{{ $song->url }}" hidden>
+        <input type="text" name="playlist" value="{{ $playlist->id }}" hidden>
+        <input type="submit" value="play">
       </form>
     </li>
   @endforeach
 </ul>
 
 <script>
-$('.form').submit(function(e){
+$('.song').submit(function(e){
   e.preventDefault();
   $.ajax({
     type: "post",

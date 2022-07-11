@@ -14,4 +14,4 @@
 
 </div>
 
-<audio src="" id="player" controls></audio>
+<audio src="" id="player" autoplay controls></audio>

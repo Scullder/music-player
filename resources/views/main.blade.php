@@ -3,7 +3,7 @@
 
 @section('body')
 <button type="button" id="home">home</button>
-<button type="button" id="playlist">playlist</button>
+<button type="button" id="list">list</button>
 
 <div id="page">
 
