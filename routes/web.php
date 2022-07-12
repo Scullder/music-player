@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\PlayerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,18 @@ use App\Http\Controllers\DataController;
 */
 
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/main', [PageController::class, 'main'])->name('main');
-Route::get('/home', [PageController::class, 'home'])->name('home');
-Route::get('/playlists', [PageController::class, 'allPlaylists']);
-Route::get('/playlist/{id}', [PageController::class, 'playlist'])->name('playlist');
 
-Route::post('/set-playlist', [PageController::class, 'setPlaylist']);
+// переход по страницам сайта(подключение через AJAX)
+Route::controller(PageController::class)->group(function () {
+    Route::get('/main', 'main')->name('main');
+    Route::get('/home', 'home')->name('home');
+    Route::get('/playlists', 'allPlaylists');
+    Route::get('/playlist/{id}', 'playlist')->name('playlist');
+    Route::get('/user-playlist', 'userPlaylist')->name('userPlaylist');
+});
+
+// изменение плейлиста
+Route::post('/set-playlist', [PlayerController::class, 'setPlaylist']);
 
 
 Route::get('/create-data', [DataController::class, 'createData']);

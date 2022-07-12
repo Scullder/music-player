@@ -9,35 +9,14 @@ use App\Models\Song;
 
 class PageController extends Controller
 {
-  private function getStorageSongs()
-  {
-    $files = Storage::files('/public/songs');
-    $songs = array();
-    $id = 0;
-    foreach($files as $file)
-    {
-      $songTitle = explode('/', $file)[2];
-      $songUrl = asset('storage/songs/' . $songTitle);
-
-      $songs[] = new Class($songTitle, $songUrl, 1)
-                 {
-                   public function __construct(public $title, public $url, public $playlist){}
-                 };
-    }
-
-    return $songs;
-  }
-
   public function main()
   {
-    return view('main', ['songs' => $this->getStorageSongs()]);
+    return view('main');
   }
 
   public function home()
   {
-    $songs = $this->getStorageSongs();
-    $songs = array_slice($songs, 4);
-    return view('pages.home', ['homeSongs' => $songs]);
+    return view('pages.home');
   }
 
   public function allPlaylists()
@@ -51,12 +30,16 @@ class PageController extends Controller
   {
     $playlist = Playlist::find($id);
     $songs = $playlist->songs;
+
     return view('pages.playlist', ['playlist' => $playlist, 'songs' => $songs]);
   }
 
-  public function setPlaylist(Request $request)
+  public function userPlaylist()
   {
-    $response = ['url' => $request->url, 'newPlaylist' => array_slice($this->getStorageSongs(), 5)];
-    return json_encode($response);
+    // session('song_id');
+    $playlist = Playlist::find(session('playlist_id'));
+    $songs = $playlist->songs;
+
+    return view('pages.user_playlist', ['playlist' => $playlist, 'songs' => $songs]);
   }
 }

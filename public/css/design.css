@@ -1,0 +1,105 @@
+body{
+  padding: 0;
+  margin: 0;
+  background-color: #242424;
+  display: flex;
+  color: white;
+}
+#menu{
+  background-color: #181818;
+  height: 100vh;
+  width: 10%;
+  padding-top: 20px;
+  display: inline-block;
+  position: fixed;
+}
+#menu-elements{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#logo{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 80px;
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/logo.png");
+  background-position: center;
+  background-size: cover;
+}
+#page{
+  display: inline-block;
+  margin-left: 10%;
+  position: relative;
+}
+#player-div{
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  width: 100vw;
+  height: 10vh;
+}
+#home{
+  background-image: url("../img/home.png");
+
+}
+#list{
+  background-image: url("../img/list.png");
+}
+#user-playlist{
+  background-image: url("../img/userplaylist.png");
+}
+#account{
+  background-image: url("../img/account.jpg");
+}
+.menu-button{
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 5vh;
+}
+.menu-button:hover{
+  cursor: pointer;
+}
+#songs-list-div{
+  width: 89.5vw;
+  margin-left: auto;
+}
+#songs-list{
+  list-style-type: none;
+  font-family: Trebuchet;
+}
+#songs-list li{
+  font-size: 20px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  width: 60vw;
+  border-radius: 5px;
+}
+#songs-list li:hover{
+  background-color: #444;
+}
+#songs-list li form{
+  margin-left: auto;
+  margin-right: 10px;
+}
+.play_small{
+  background-image: url("../img/play_small.png");
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  display: block;
+}
+.play_small:hover{
+  cursor: pointer;
+}
