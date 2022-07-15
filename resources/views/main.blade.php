@@ -3,8 +3,6 @@
 
 @section('body')
 
-
-
 <div id="menu">
   <div id="logo">
   </div>

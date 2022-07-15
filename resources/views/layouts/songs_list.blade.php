@@ -1,17 +1,16 @@
 <div id="songs-list-div">
-  <h3>{{ $playlist->title }}</h3>
   <ul id="songs-list">
     @foreach($songs as $song)
       <li>
-        <div class="song-title">{{ stristr($song->title, strrchr($song->title, '.'), true) }}</div>
-
-        <form class="song" method='post'>
+        <form class="song" method='get'>
           @csrf
           <input type="text" name="song_id" value="{{ $song->id }}" hidden>
           <input type="text" name="url" value="{{ $song->url }}" hidden>
-          <input type="text" name="playlist_id" value="{{ $playlist->id }}" hidden>
+          <input type="text" name="playlist_id" value="{{ $song->pivot->playlist_id }}" hidden>
           <input type="submit" class="play_small" value="">
         </form>
+
+        <div class="song-title">{{ stristr($song->title, strrchr($song->title, '.'), true) }}</div>
       </li>
     @endforeach
   </ul>
@@ -20,16 +19,23 @@
 <script>
 $('.song').submit(function(e){
   e.preventDefault();
+  playlistId = $(this).find('input[name="playlist_id"]').val();
+
   $.ajax({
     type: "post",
     url: '/public/set-playlist',
     data: $(this).serialize(),
-    success: function(response){
+    success: function(response)
+    {
       response = JSON.parse(response);
       currentSongIndex = response.index;
-      currentPlaylist = response.playlist;
-      changeSong(response.url);
-      console.log(response);
+      //changePlayerInfo(response.title, response.poster);
+      if(playlistId != currentPlaylistId)
+      {
+        currentPlaylistId = playlistId;
+        currentPlaylist = JSON.parse(response.songs);
+      }
+      swichSong(currentPlaylist[response.index]);
     }
   });
 

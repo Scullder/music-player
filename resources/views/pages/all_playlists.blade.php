@@ -1,16 +1,26 @@
-<h3>list of all music</h3>
-
-@foreach($playlists as $playlist)
-  <div class="playlist">
-    {{ $playlist->title }}
-    <input type="text" value="{{ $playlist->id }}" hidden>
-  </div>
-@endforeach
+<div id='playlist-div'>
+  <table id='playlists'>
+    @php ($columns = 0)
+    <tr>
+      @foreach($playlists as $playlist)
+        <td>
+          <img src="{{ $playlist->image }}"><br>
+          {{ $playlist->title }}
+          <input type="text" value="{{ $playlist->id }}" hidden>
+        </td>
+        @if(++$columns == 6)
+          </tr><tr>
+          @php ($columns = 0)
+        @endif
+      @endforeach
+    </tr>
+  </table>
+</div>
 
 
 <script>
-$('.playlist').click(function(){
-  id = $(this).find('input').attr('value');
+$('#playlists td img').click(function(){
+  id = $(this).parent().find('input').attr('value');
   include('playlist/' + id);
 });
 </script>

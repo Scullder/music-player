@@ -17,7 +17,7 @@ use App\Http\Controllers\PlayerController;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
+//Route::get('/', [IndexController::class, 'index']);
 
 // переход по страницам сайта(подключение через AJAX)
 Route::controller(PageController::class)->group(function () {
@@ -29,7 +29,10 @@ Route::controller(PageController::class)->group(function () {
 });
 
 // изменение плейлиста
-Route::post('/set-playlist', [PlayerController::class, 'setPlaylist']);
+Route::post('/set-playlist', [PlayerController::class, 'set']);
+Route::get('/update-playlist', [PlayerController::class, 'update']);
 
-
+// добавление данных в БД
 Route::get('/create-data', [DataController::class, 'createData']);
+Route::get('/update-playlist-image', [DataController::class, 'updateImages']);
+Route::get('/update-songs-posters', [DataController::class, 'updatePosters']);
