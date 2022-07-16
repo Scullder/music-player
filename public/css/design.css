@@ -114,16 +114,19 @@ body{
   border-collapse: separate;
   margin-left: auto;
   margin-right: auto;
-  border-spacing: 5px;
+  border-spacing: 10px;
 }
 #playlists td{
   text-align: center;
   cursor: default;
+
 }
 #playlists td img{
   width: 150px;
   height: 150px;
+  border-radius: 2px;
 }
 #playlists td img:hover{
   cursor: pointer;
+  transform: translateY(-3px);
 }

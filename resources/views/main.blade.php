@@ -9,9 +9,9 @@
 
   <div id="menu-elements">
     <button type="button" id="home" class='menu-button'></button><br>
+    <button type="button" id="account" class='menu-button'></button><br>
     <button type="button" id="list" class='menu-button'></button><br>
     <button type="button" id="user-playlist" class='menu-button'></button><br>
-    <button type="button" id="account" class='menu-button'></button><br>
   </div>
 </div>
 

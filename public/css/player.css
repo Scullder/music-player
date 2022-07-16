@@ -54,3 +54,16 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+#progres-bar{
+  margin-top: 13px;
+  margin-left: 25px;
+}
+.full-progres{
+  width: 700px;
+  height: 5px;
+  background-color: gray;
+}
+.current-progres{
+
+}

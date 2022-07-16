@@ -1,9 +1,7 @@
 $(document).ready(function() {
-
   $('#home').click(function(){ include('home') });
   $('#list').click(function(){ include('playlists') });
   $('#user-playlist').click(function(){ include('user-playlist') });
-
 });
 
 function include(page, data)
@@ -18,5 +16,4 @@ function include(page, data)
       $('#page').append(response);
     }
   });
-
 }

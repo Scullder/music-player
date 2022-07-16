@@ -1,18 +1,27 @@
 <div id="pl">
+  <audio src="{{ $lastSongUrl }}" id="player"></audio>
 
-<audio src="{{ $lastSongUrl }}" id="player"></audio>
+  <div id="test">
+    
+    <div id="player-info">
+      <img id="img" src="">
+      <h4 id="h"></h4>
+    </div>
 
-<div id="test">
-  <div id="player-info">
-    <img id="img" src="">
-    <h4 id="h"></h4>
+    <div id="player-controls">
+      <div id="custom-prev" class="player-button"></div>
+      <div id="custom-play" class="player-button"></div>
+      <div id="custom-next" class="player-button"></div>
+
+      <div id="progres-bar">
+        <div class="full-progres">
+          <div class="current-progres">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <div id="player-controls">
-    <div id="custom-prev" class="player-button"></div>
-    <div id="custom-play" class="player-button"></div>
-    <div id="custom-next" class="player-button"></div>
-  </div>
-</div>
 
 </div>

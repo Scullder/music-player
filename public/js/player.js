@@ -25,7 +25,6 @@ $(document).ready(function(){
     nextSong();
   });
 
-
   $.ajax({
     type: "get",
     url: '/public/update-playlist',
